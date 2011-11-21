@@ -54,4 +54,15 @@ public class GraphTest {
         }
     }
 
+    @Test
+    public void getNeighborsForFinishTest() {
+        Node finish = graph.getFinish();
+        List<Node> neighbors = graph.getNeighbors(finish);
+        assertNotNull(neighbors);
+        assertEquals(3, neighbors.size());
+        for (Node neighbor : neighbors) {
+            assertEquals(NodeType.EMPTY, neighbor.getType());
+        }
+    }
+
 }
