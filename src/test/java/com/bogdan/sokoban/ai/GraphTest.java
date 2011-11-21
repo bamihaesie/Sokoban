@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.net.URL;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -25,19 +26,32 @@ public class GraphTest {
     }
 
     @Test
-    public void readFromFileTest() {
+    public void numberOfNodesTest() {
         assertNotNull(graph.getVertices());
         assertEquals(25, graph.getVertices().size());
     }
 
     @Test
     public void startIsSetTest() {
-        assertNotNull(graph.getStart());
+        Node start = graph.getStart();
+        assertNotNull(start);
+        assertEquals(NodeType.START, start.getType());
     }
 
     @Test
     public void finishIsSetTest() {
         assertNotNull(graph.getFinish());
+    }
+
+    @Test
+    public void getNeighborsForStartTest() {
+        Node start = graph.getStart();
+        List<Node> neighbors = graph.getNeighbors(start);
+        assertNotNull(neighbors);
+        assertEquals(3, neighbors.size());
+        for (Node neighbor : neighbors) {
+            assertEquals(NodeType.EMPTY, neighbor.getType());
+        }
     }
 
 }
