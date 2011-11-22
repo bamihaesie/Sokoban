@@ -1,6 +1,5 @@
 package com.bogdan.sokoban.ai;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
@@ -18,24 +17,28 @@ public class PathFinderTest {
     PathFinder pathFinder;
 
     @Test
-    public void thereIsAPathTest() {
-        Graph graph1 = buildGraphFromFile("/graph1.txt");
-        pathFinder = new PathFinder(graph1);
-        assertTrue("There should be a path in this graph!", pathFinder.findPath(graph1.getStart(), graph1.getFinish()));
+    public void testThereIsPathTest() {
+        Grid grid = createGridFromFile("/grid1.txt");
+        pathFinder = new PathFinder(grid);
+        Square start = grid.getAllSquaresByType(SquareType.START).get(0);
+        Square finish = grid.getAllSquaresByType(SquareType.FINISH).get(0);
+        assertTrue("There should be a path!", pathFinder.findPath(start, finish));
     }
 
     @Test
-    public void thereIsNoPathTest() {
-        Graph graph2 = buildGraphFromFile("/graph2.txt");
-        pathFinder = new PathFinder(graph2);
-        assertFalse("There should be no path in this graph!", pathFinder.findPath(graph2.getStart(), graph2.getFinish()));
+    public void testThereIsNoPathTest() {
+        Grid grid = createGridFromFile("/grid2.txt");
+        pathFinder = new PathFinder(grid);
+        Square start = grid.getAllSquaresByType(SquareType.START).get(0);
+        Square finish = grid.getAllSquaresByType(SquareType.FINISH).get(0);
+        assertFalse("There should be no path!", pathFinder.findPath(start, finish));
     }
 
-    private Graph buildGraphFromFile(String fileName) {
+    private Grid createGridFromFile(String fileName) {
         URL url = this.getClass().getResource(fileName);
         assertNotNull("Can't open input file!", url);
-        File graphFile = new File(url.getFile());
-        return new Graph(graphFile);
+        File gridFile = new File(url.getFile());
+        return new Grid(gridFile);
     }
 
 }

@@ -8,21 +8,20 @@ import java.util.List;
  */
 public class PathFinder {
 
-    private Graph graph;
-    private List<Node> openList, closedList;
+    private Grid grid;
+    private List<Square> openList, closedList;
 
-    public PathFinder(Graph graph) {
-        this.graph = graph;
-        openList = new ArrayList<Node>();
-        closedList = new ArrayList<Node>();
+    public PathFinder(Grid grid) {
+        this.grid = grid;
+        openList = new ArrayList<Square>();
+        closedList = new ArrayList<Square>();
     }
 
-    public boolean findPath(Node start, Node finish) {
+    public boolean findPath(Square start, Square finish) {
         openList.add(start);
         while (!openList.isEmpty()) {
-
+            openList.remove(0);
         }
-
 
         return true;
     }

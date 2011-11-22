@@ -3,23 +3,29 @@ package com.bogdan.sokoban.ai;
 /**
  * @author Bogdan
  */
-class Node {
+class Square {
 
-    private NodeType type;
+    private String name;
+    private SquareType type;
     private Position position;
     private int g, h;
 
-    public Node(NodeType type) {
+    public Square(SquareType type, int x, int y) {
         this.type = type;
-    }
-
-    public Node(NodeType type, int x, int y) {
-        this(type);
         this.position = new Position(x, y);
+        this.name = "Square_" + x + "_" + y;
     }
 
-    public NodeType getType() {
+    public SquareType getType() {
         return type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Position getPosition() {
+        return position;
     }
 
     public int getG() {
@@ -44,21 +50,11 @@ class Node {
 
     @Override
     public String toString() {
-        return "Node (" + position.x + "," + position.y + "," + type + ")";
+        return "Square (" + name + "," + type + ")";
     }
 }
 
-class Position {
-    int x;
-    int y;
-
-    Position(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-}
-
-enum NodeType {
+enum SquareType {
 
     EMPTY   (0),
     START   (1),
@@ -67,12 +63,16 @@ enum NodeType {
 
     private int code;
 
-    NodeType(int code) {
+    SquareType(int code) {
         this.code = code;
     }
 
-    public static NodeType getNodeTypeByCode(int code) {
-        for (NodeType nodeType : values()) {
+    public int getCode() {
+        return code;
+    }
+
+    public static SquareType getNodeTypeByCode(int code) {
+        for (SquareType nodeType : values()) {
             if (nodeType.code == code) {
                 return nodeType;
             }
