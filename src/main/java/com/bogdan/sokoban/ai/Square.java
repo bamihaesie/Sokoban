@@ -3,7 +3,7 @@ package com.bogdan.sokoban.ai;
 /**
  * @author Bogdan
  */
-class Square {
+class Square implements Comparable<Square> {
 
     private String name;
     private SquareType type;
@@ -49,8 +49,34 @@ class Square {
     }
 
     @Override
+    public boolean equals(Object object) {
+        if (object instanceof Square) {
+            Square anotherSquare = (Square) object;
+            return compareTo(anotherSquare) == 0;
+        }
+        return false;
+    }
+
+    @Override
     public String toString() {
-        return "Square (" + name + "," + type + ")";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Square\n");
+        stringBuilder.append("\t name = " + name + " \n");
+        stringBuilder.append("\t type = " + type + " \n");
+        stringBuilder.append("\t g = " + g + " \n");
+        stringBuilder.append("\t h = " + h + " \n");
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public int compareTo(Square anotherSquare) {
+        if (getF() > anotherSquare.getF()) {
+            return 1;
+        }
+        if (getF() < anotherSquare.getF()) {
+            return -1;
+        }
+        return 0;
     }
 }
 
