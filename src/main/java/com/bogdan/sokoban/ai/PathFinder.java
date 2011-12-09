@@ -49,10 +49,10 @@ public class PathFinder {
             for (Square neighbor : neighbors) {
                 if (!closedList.contains(neighbor) && isWalkable(neighbor)) {
                     if (!openList.contains(neighbor)) {
-                        openList.add(neighbor);
                         neighbor.setParent(current);
                         neighbor.setH(computeH(neighbor, finish));
                         neighbor.setG(computeG(current));
+                        openList.add(neighbor);
                     } else {
                         if (neighbor.getG() > current.getG() + 1) {
                             neighbor.setParent(current);
