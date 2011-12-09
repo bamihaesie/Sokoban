@@ -9,6 +9,7 @@ class Square implements Comparable<Square> {
     private SquareType type;
     private Position position;
     private int g, h;
+    private Square parent;
 
     public Square(SquareType type, int x, int y) {
         this.type = type;
@@ -48,6 +49,14 @@ class Square implements Comparable<Square> {
         return getG() + getH();
     }
 
+    public Square getParent() {
+        return parent;
+    }
+
+    public void setParent(Square parent) {
+        this.parent = parent;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (object instanceof Square) {
@@ -68,7 +77,6 @@ class Square implements Comparable<Square> {
         return stringBuilder.toString();
     }
 
-    @Override
     public int compareTo(Square anotherSquare) {
         if (getF() > anotherSquare.getF()) {
             return 1;
