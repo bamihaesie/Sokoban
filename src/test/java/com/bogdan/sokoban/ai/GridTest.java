@@ -1,6 +1,5 @@
 package com.bogdan.sokoban.ai;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.NodeType;
 import org.junit.Before;
 import org.junit.Test;
 

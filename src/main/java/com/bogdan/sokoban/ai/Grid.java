@@ -13,15 +13,47 @@ public class Grid {
     private Square[][] matrix;
 
     public Grid(File inputFile) {
-        readFromFile(inputFile);
+        try {
+            readGridFromFile(inputFile);
+        } catch (FileNotFoundException exception) {
+            System.err.println("Input file not found!");
+        } catch (IOException exception) {
+            System.err.println("Error reading input file!");
+        }
     }
 
-    public int getRowCount() {
-        return rowCount;
+    private void readGridFromFile(File inputFile) throws IOException {
+        BufferedReader bufferedReader =
+                new BufferedReader(new FileReader(inputFile));
+        setCounts(bufferedReader);
+        populateMatrix(bufferedReader);
     }
 
-    public int getColumnCount() {
-        return columnCount;
+    private void setCounts(BufferedReader bufferedReader) throws IOException {
+        String line = bufferedReader.readLine();
+
+        String[] tokens = line.split(" ");
+        if (tokens != null && tokens.length == 2) {
+            rowCount = Integer.parseInt(tokens[0]);
+            columnCount = Integer.parseInt(tokens[1]);
+        }
+
+        matrix = new Square[rowCount][columnCount];
+    }
+
+    private void populateMatrix(BufferedReader bufferedReader) throws IOException {
+        String line = "";
+        int index = 0;
+        while((line = bufferedReader.readLine()) != null) {
+            String[] tokens = line.split(" ");
+            for (int i=0; i<tokens.length; i++) {
+                SquareType nodeType =
+                        SquareType.getNodeTypeByCode(Integer.parseInt(tokens[i]));
+                Square node = new Square(nodeType, index, i);
+                matrix[index][i] = node;
+            }
+            index++;
+        }
     }
 
     public Square get(int x, int y) {
@@ -66,6 +98,16 @@ public class Grid {
         return neighbors;
     }
 
+    private boolean isValidPosition(Position position) {
+        if (    position.getX() < 0 ||
+                position.getX() >= rowCount ||
+                position.getY() < 0 ||
+                position.getY() >= columnCount) {
+            return false;
+        }
+        return true;
+    }
+
     public List<Square> getAllSquaresByType(SquareType type) {
         List<Square> results = new ArrayList<Square>();
         for (int i=0; i<rowCount; i++) {
@@ -78,49 +120,12 @@ public class Grid {
         return results;
     }
 
-    private boolean isValidPosition(Position position) {
-        if (    position.getX() < 0 ||
-                position.getX() >= rowCount ||
-                position.getY() < 0 ||
-                position.getY() >= columnCount) {
-            return false;
-        }
-        return true;
+    public int getRowCount() {
+        return rowCount;
     }
 
-    private void readFromFile(File inputFile) {
-        try {
-            BufferedReader bufferedReader =
-                    new BufferedReader(new FileReader(inputFile));
-            String line = bufferedReader.readLine();
-            setCounts(line);
-            int index = 0;
-            matrix = new Square[rowCount][columnCount];
-            while((line = bufferedReader.readLine()) != null) {
-                String[] tokens = line.split(" ");
-                for (int i=0; i<tokens.length; i++) {
-                    SquareType nodeType =
-                            SquareType.getNodeTypeByCode(Integer.parseInt(tokens[i]));
-                    Square node = new Square(nodeType, index, i);
-                    matrix[index][i] = node;
-                }
-                index++;
-            }
-        } catch (FileNotFoundException fnfe) {
-            System.err.println("Input file not found!");
-        } catch (IOException ioe) {
-            System.err.println("Error reading input file!");
-        }
-    }
-
-    private void setCounts(String line) {
-        String[] tokens = line.split(" ");
-        if (tokens != null && tokens.length == 2) {
-            rowCount = Integer.parseInt(tokens[0]);
-            columnCount = Integer.parseInt(tokens[1]);
-        }
+    public int getColumnCount() {
+        return columnCount;
     }
 
 }
-
-
