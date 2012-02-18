@@ -1,5 +1,7 @@
-package com.bogdan.sokoban.ai;
+package com.bogdan.sokoban.ai.model;
 
+import com.bogdan.sokoban.ai.model.Square;
+import com.bogdan.sokoban.ai.model.SquareType;
 import org.junit.Test;
 
 import java.util.PriorityQueue;

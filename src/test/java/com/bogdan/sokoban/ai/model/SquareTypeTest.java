@@ -1,5 +1,6 @@
-package com.bogdan.sokoban.ai;
+package com.bogdan.sokoban.ai.model;
 
+import com.bogdan.sokoban.ai.model.SquareType;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -11,7 +12,7 @@ public class SquareTypeTest {
 
     @Test
     public void getCountTest() {
-         assertEquals(4, SquareType.values().length);
+         assertEquals(5, SquareType.values().length);
     }
 
     @Test

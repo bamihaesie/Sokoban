@@ -1,5 +1,8 @@
-package com.bogdan.sokoban.ai;
+package com.bogdan.sokoban.ai.model;
 
+import com.bogdan.sokoban.ai.model.Grid;
+import com.bogdan.sokoban.ai.model.Square;
+import com.bogdan.sokoban.ai.model.SquareType;
 import org.junit.Before;
 import org.junit.Test;
 

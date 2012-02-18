@@ -1,11 +1,13 @@
-package com.bogdan.sokoban.ai;
+package com.bogdan.sokoban.ai.service;
 
-import sun.rmi.runtime.Log;
+import com.bogdan.sokoban.ai.model.Grid;
+import com.bogdan.sokoban.ai.model.Position;
+import com.bogdan.sokoban.ai.model.Square;
+import com.bogdan.sokoban.ai.model.SquareType;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
-import java.util.logging.Logger;
 
 /**
  * @author Bogdan
@@ -75,11 +77,8 @@ public class PathFinder {
      * @return true if the square can be walked on
      */
     private boolean isWalkable(Square square) {
-        if (square.getType() == SquareType.EMPTY ||
-                square.getType() == SquareType.FINISH) {
-            return true;
-        }
-        return false;
+        return (square.getType() == SquareType.EMPTY ||
+                square.getType() == SquareType.FINISH);
     }
 
     /**

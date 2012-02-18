@@ -1,4 +1,4 @@
-package com.bogdan.sokoban.ai;
+package com.bogdan.sokoban.ai.model;
 
 /**
  * @author Bogdan

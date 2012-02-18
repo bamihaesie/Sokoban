@@ -1,15 +1,18 @@
-package com.bogdan.sokoban.ai;
+package com.bogdan.sokoban.ai.model;
+
+import com.bogdan.sokoban.ai.model.SquareType;
 
 /**
  * @author Bogdan
  */
-class Square implements Comparable<Square> {
+public class Square implements Comparable<Square> {
 
     private String name;
     private SquareType type;
     private Position position;
     private int g, h;
     private Square parent;
+    private boolean deadEnd;
 
     public Square(SquareType type, int x, int y) {
         this.type = type;
@@ -55,6 +58,14 @@ class Square implements Comparable<Square> {
 
     public void setParent(Square parent) {
         this.parent = parent;
+    }
+
+    public boolean isDeadEnd() {
+        return deadEnd;
+    }
+
+    public void setDeadEnd(boolean deadEnd) {
+        this.deadEnd = deadEnd;
     }
 
     @Override

@@ -1,14 +1,15 @@
-package com.bogdan.sokoban.ai;
+package com.bogdan.sokoban.ai.model;
 
 /**
  * @author Bogdan
  */
-enum SquareType {
+public enum SquareType {
 
     EMPTY   (0),
     START   (1),
     FINISH  (2),
-    WALL    (3);
+    WALL    (3),
+    MAN     (4);
 
     private int code;
 

@@ -1,4 +1,8 @@
-package com.bogdan.sokoban.ai;
+package com.bogdan.sokoban.ai.model;
+
+import com.bogdan.sokoban.ai.model.Position;
+import com.bogdan.sokoban.ai.model.Square;
+import com.bogdan.sokoban.ai.model.SquareType;
 
 import java.io.*;
 import java.util.ArrayList;
