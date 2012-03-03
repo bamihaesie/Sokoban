@@ -1,8 +1,5 @@
 package com.bogdan.sokoban.ai.model;
 
-import com.bogdan.sokoban.ai.model.Grid;
-import com.bogdan.sokoban.ai.model.Square;
-import com.bogdan.sokoban.ai.model.SquareType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,9 +7,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 /**
  * @author Bogdan

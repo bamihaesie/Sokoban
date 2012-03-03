@@ -1,14 +1,10 @@
 package com.bogdan.sokoban.ai.model;
 
-import com.bogdan.sokoban.ai.model.Square;
-import com.bogdan.sokoban.ai.model.SquareType;
 import org.junit.Test;
 
 import java.util.PriorityQueue;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * @author Bogdan
@@ -41,6 +37,12 @@ public class SquareTest {
         pq.add(s2);
         pq.add(s3);
         assertEquals(s2, pq.peek());
+    }
+    
+    @Test void deadEndSquareTest() {
+        Square square = new Square(SquareType.EMPTY, 0, 0);
+        square.setDeadEnd(true);
+        assertTrue(square.isDeadEnd());
     }
 
     private Square createSquare(int f) {

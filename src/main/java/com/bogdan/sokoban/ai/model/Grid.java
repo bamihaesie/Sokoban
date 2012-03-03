@@ -1,9 +1,5 @@
 package com.bogdan.sokoban.ai.model;
 
-import com.bogdan.sokoban.ai.model.Position;
-import com.bogdan.sokoban.ai.model.Square;
-import com.bogdan.sokoban.ai.model.SquareType;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +42,7 @@ public class Grid {
     }
 
     private void populateMatrix(BufferedReader bufferedReader) throws IOException {
-        String line = "";
+        String line;
         int index = 0;
         while((line = bufferedReader.readLine()) != null) {
             String[] tokens = line.split(" ");
@@ -103,13 +99,10 @@ public class Grid {
     }
 
     private boolean isValidPosition(Position position) {
-        if (    position.getX() < 0 ||
+        return position.getX() < 0 ||
                 position.getX() >= rowCount ||
                 position.getY() < 0 ||
-                position.getY() >= columnCount) {
-            return false;
-        }
-        return true;
+                position.getY() >= columnCount;
     }
 
     public List<Square> getAllSquaresByType(SquareType type) {

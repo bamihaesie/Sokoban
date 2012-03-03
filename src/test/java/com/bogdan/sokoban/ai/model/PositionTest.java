@@ -1,6 +1,5 @@
 package com.bogdan.sokoban.ai.model;
 
-import com.bogdan.sokoban.ai.model.Position;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

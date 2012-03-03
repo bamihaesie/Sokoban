@@ -1,7 +1,5 @@
 package com.bogdan.sokoban.ai.model;
 
-import com.bogdan.sokoban.ai.model.SquareType;
-
 /**
  * @author Bogdan
  */

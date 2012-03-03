@@ -3,7 +3,6 @@ package com.bogdan.sokoban.ai.service;
 import com.bogdan.sokoban.ai.model.Grid;
 import com.bogdan.sokoban.ai.model.Square;
 import com.bogdan.sokoban.ai.model.SquareType;
-import com.bogdan.sokoban.ai.service.PathFinder;
 import org.junit.Test;
 
 import java.io.File;
