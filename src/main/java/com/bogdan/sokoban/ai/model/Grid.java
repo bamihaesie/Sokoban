@@ -99,10 +99,18 @@ public class Grid {
     }
 
     private boolean isValidPosition(Position position) {
-        return position.getX() < 0 ||
-                position.getX() >= rowCount ||
-                position.getY() < 0 ||
-                position.getY() >= columnCount;
+        return isValidXAxisPosition(position) &&
+                isValidYAxisPosition(position);
+    }
+    
+    private boolean isValidXAxisPosition(Position position) {
+        return position.getX() >= 0 &&
+                position.getX() < rowCount;
+    }
+
+    private boolean isValidYAxisPosition(Position position) {
+        return position.getY() >= 0 &&
+                position.getY() < columnCount;
     }
 
     public List<Square> getAllSquaresByType(SquareType type) {

@@ -39,7 +39,8 @@ public class SquareTest {
         assertEquals(s2, pq.peek());
     }
     
-    @Test void deadEndSquareTest() {
+    @Test
+    public void deadEndSquareTest() {
         Square square = new Square(SquareType.EMPTY, 0, 0);
         square.setDeadEnd(true);
         assertTrue(square.isDeadEnd());
