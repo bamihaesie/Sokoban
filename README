@@ -1,0 +1,8 @@
+
+SOKOBAN is a type of transport puzzle, in which the player pushes boxes or crates around in a warehouse, trying to get them to storage locations.
+
+Rules:
+ - Only one box can be pushed at a time.
+ - A box cannot be pulled.
+ - The player cannot walk through boxes or walls.
+ - The puzzle is solved when all boxes are located at storage locations.
